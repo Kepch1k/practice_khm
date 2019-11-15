@@ -5,7 +5,11 @@
     "database": "todo-dev",
     "host": "db-dev",
     "dialect": "postgres",
-    "operatorsAliases": "Op"
+    "operatorsAliases": "Op",
+    "mongoUrl": "mongodb://mongodb:27017",
+    "mongoUsername": "mongoDB",
+    "mongoPassword": "password",
+    "mongoDBName": "db-dev"
   },
   "test": {
     "username": "postgres",

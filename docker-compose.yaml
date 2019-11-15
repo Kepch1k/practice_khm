@@ -25,6 +25,7 @@ services:
       - "3000:3000"
     depends_on:
       - db-dev
+      - mongo-dev
     volumes:
       - ./var/www/html/images:/var/www/html/images
       - ./server:/server
@@ -41,17 +42,16 @@ services:
       
       
   mongo-dev:
-    image: mongo:latest
+    image: mongo:latest #3.4.2
     container_name: "mongodb"
     environment:
-      - MONGO_INITDB_PASSWORD=password
-      - MONGO_INITDB_USERNAME=mongoDB
       - MONGO_INITDB_DATABASE=db-dev
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_USERNAME=mongoDB
     ports:
       - '27017:27017'
     volumes:
-      #- ~/var/lib/mongodb:/data/db
+      #- ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       -  /mongodb:/data/db
-
 volumes:
   server-dev:
