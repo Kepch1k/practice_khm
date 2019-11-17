@@ -1,11 +1,11 @@
 db.createUser(
     {
-        user: "mongoDB",
+        user: "admin",
         pwd: "password",
-        roles: [
+        roles:[
             {
                 role: "readWrite",
-                db: "db-dev"
+                db:   "mydatabase"
             }
         ]
     }

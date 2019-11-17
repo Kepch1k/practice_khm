@@ -50,8 +50,13 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=mongoDB
     ports:
       - '27017:27017'
+    #command:
+      #- '--auth'
+      #- '-f'
+      #- '/etc/config/mongodb.conf'
     volumes:
-      #- ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-      -  /mongodb:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - /mongodb:/data/db
+      - /etc/mongodb.conf:/etc/config/mongodb.conf
 volumes:
   server-dev:
